@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LandingPage from "./Pages/LandingPage";
+import MeetingPage from "./Pages/MeetingPage";
+import MeetingEndingPage from "./Pages/MeetingEndingPage";
+import { useState } from "react";
 
 function App() {
+  const [meetLink, setMeetLink] = useState(
+    ""
+  );
+  const [name, setName] = useState("");
+  const [meetings, setMeetings] = useState([]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={
+            <LandingPage
+              meetLink={meetLink}
+              setMeetLink={setMeetLink}
+              name={name}
+              setName={setName}
+              setMeetings={setMeetings}
+              meetings={meetings}
+            />
+          }
+        />
+        <Route
+          path="/meeting"
+          element={<MeetingPage meetLink={meetLink} name={name} />}
+        />
+        <Route path="/meetEnding" element={<MeetingEndingPage />} />
+      </Routes>
     </div>
   );
 }
