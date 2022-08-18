@@ -33,8 +33,14 @@ export default function LandingPage({ meetLink, setMeetLink, name, setName, meet
       <div class="alert alert-primary" role="alert">
         Meeting Demo
       </div>
-
+        
         <div className="container">
+        <input
+              className="w-100 p-1 my-3"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter Display Name"
+            />
             {meetings.map(((meeting)=>{
                 return(
                 <div className="alert alert-info row align-items-center">
@@ -56,7 +62,7 @@ export default function LandingPage({ meetLink, setMeetLink, name, setName, meet
 
 
 
-      <div className="container mt-5">
+      {/* <div className="container mt-5">
         <div className="row align-items-center">
           <div className="col-8">
             <input
@@ -78,7 +84,7 @@ export default function LandingPage({ meetLink, setMeetLink, name, setName, meet
             <button className="btn btn-dark" onClick={()=> navigation('/meeting')}>Join!</button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
