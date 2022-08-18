@@ -36,7 +36,19 @@ export default function LandingPage({ meetLink, setMeetLink, name, setName, meet
 
         <div className="container">
             {meetings.map(((meeting)=>{
-                return(<div className="alert alert-info">{meeting.room_url}</div>)
+                return(
+                <div className="alert alert-info row align-items-center">
+                    <div className="col-10">
+                        {meeting.room_url} 
+                    </div>
+                    <div className="col-2">
+                        <button className="btn btn-dark" style={{float:'right'}} onClick={()=>{
+                            setMeetLink(meeting.room_url)
+                            navigation('/meeting')
+                        }}>Join!</button>
+                    </div>
+                    </div>
+                    )
             }))}
             <button className="btn btn-dark" onClick={createMeeting}>Create Meeting!</button>
         </div>
